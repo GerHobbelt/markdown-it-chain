@@ -48,19 +48,19 @@
     "node": ">=6.9"
   },
   "devDependencies": {
-    "eslint-plugin-jest": "^22.14.0",
+    "eslint-plugin-jest": "^23.0.3",
     "eslint-plugin-vue-libs": "^4.0.0",
-    "jest-cli": "^24.8.0",
+    "jest-cli": "^24.9.0",
     "markdown-it": "^10.0.0",
-    "markdown-it-anchor": "^5.0.2",
-    "markdown-it-table-of-contents": "^0.4.3",
+    "markdown-it-anchor": "^5.2.5",
+    "markdown-it-table-of-contents": "^0.4.4",
     "xo": "^0.25.3",
-    "release-it": "12.3.6",
+    "release-it": "12.4.3",
     "babel-preset-env": "^1.7.0",
-    "conventional-changelog-cli": "^2.0.1"
+    "conventional-changelog-cli": "^2.0.25"
   },
   "peerDependencies": {
-    "markdown-it": ">=5.0.0"
+    "markdown-it": ">=10.0.0"
   },
   "xo": {
     "extends": [
