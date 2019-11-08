@@ -1,15 +1,15 @@
 import MarkdownItPluginChain from '../src'
 
-function PluginA () {
-  console.log(arguments)
+function PluginA (...args) {
+  console.log(args)
 }
 
-function PluginB () {
-  console.log(arguments)
+function PluginB (...args) {
+  console.log(args)
 }
 
-function PluginC () {
-  console.log(arguments)
+function PluginC (...args) {
+  console.log(args)
 }
 
 test('options', () => {
@@ -98,8 +98,8 @@ test('plugin - after', () => {
 
 test('plugin - modify options', () => {
   let config = new MarkdownItPluginChain()
-  let optionsA = {}
-  let optionsB = {}
+  const optionsA = {}
+  const optionsB = {}
 
   config
     .plugin('A')
@@ -113,9 +113,9 @@ test('plugin - modify options', () => {
   expect(config.plugins[0].args[0]).toBe(optionsB)
 })
 
-test('plugin - modify options', () => {
+test('plugin - modify options 2', () => {
   let config = new MarkdownItPluginChain()
-  let options = { a: 1 }
+  const options = { a: 1 }
 
   config
     .plugin('A')
@@ -143,28 +143,28 @@ test('realword example', () => {
     // Interact with 'options' in new MarkdownIt
     // Ref: https://markdown-it.github.io/markdown-it/#MarkdownIt.new
     .options
-      .html(true) // equal to .set('html', true)
-      .linkify(true)
-      .end()
+    .html(true) // Equal to .set('html', true)
+    .linkify(true)
+    .end()
 
     // Interact with 'plugins'
     .plugin('toc')
-      // The first parameter is the plugin module, which may be a function
-      // while the second parameter is an array of parameters accepted by the plugin.
-      .use(require('markdown-it-table-of-contents'), [{
-        includeLevel: [2, 3]
-      }])
-      // Move up one level, like .end() in jQuery.
-      .end()
+  // The first parameter is the plugin module, which may be a function
+  // while the second parameter is an array of parameters accepted by the plugin.
+    .use(require('markdown-it-table-of-contents'), [{
+      includeLevel: [2, 3]
+    }])
+  // Move up one level, like .end() in jQuery.
+    .end()
 
     .plugin('anchor')
-      .use(require('markdown-it-anchor'), [{
-        permalink: true,
-        permalinkBefore: true,
-        permalinkSymbol: '$'
-      }])
-      // Apply this plugin before toc.
-      .before('toc')
+    .use(require('markdown-it-anchor'), [{
+      permalink: true,
+      permalinkBefore: true,
+      permalinkSymbol: '$'
+    }])
+  // Apply this plugin before toc.
+    .before('toc')
 
   // Create a markdown-it instance using the above configuration
   const md = config.toMd()

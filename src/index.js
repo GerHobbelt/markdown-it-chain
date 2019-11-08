@@ -1,6 +1,6 @@
 const ChainedMap = require('webpack-chain/src/ChainedMap')
-const Plugin = require('./Plugin')
-const Options = require('./Options')
+const Plugin = require('./plugin')
+const Options = require('./options')
 
 module.exports = class MarkdownItChain extends ChainedMap {
   constructor () {
@@ -29,11 +29,13 @@ module.exports = class MarkdownItChain extends ChainedMap {
     if (!markdownIt) {
       try {
         markdownIt = require.resolve('markdown-it')
-      } catch (e) {
+      } catch (error) {
         throw new Error('Failed to detect markdown-it has been installed')
       }
+
       markdownIt = require(markdownIt)
     }
+
     const md = markdownIt(Object.assign(instantiationOptions, options))
     return plugins.reduce((md, { plugin, args }) => md.use(plugin, ...args), md)
   }
