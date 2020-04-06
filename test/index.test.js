@@ -132,7 +132,7 @@ test('plugin - modify options', () => {
 test('realword example', () => {
   // Require the markdown-it-chain module. This module exports a single
   // constructor function for creating a configuration API.
-  const Config = require('markdown-it-chain')
+  const Config = require('../')  // require('@gerhobbelt/markdown-it-chain')   <-- would load the installed one, NOT the local code!
 
   // Instantiate the configuration with a new API
   const config = new Config()
@@ -151,14 +151,14 @@ test('realword example', () => {
     .plugin('toc')
       // The first parameter is the plugin module, which may be a function
       // while the second parameter is an array of parameters accepted by the plugin.
-      .use(require('markdown-it-table-of-contents'), [{
+      .use(require('@gerhobbelt/markdown-it-table-of-contents'), [{
         includeLevel: [2, 3]
       }])
       // Move up one level, like .end() in jQuery.
       .end()
 
     .plugin('anchor')
-      .use(require('markdown-it-anchor'), [{
+      .use(require('@gerhobbelt/markdown-it-anchor'), [{
         permalink: true,
         permalinkBefore: true,
         permalinkSymbol: '$'

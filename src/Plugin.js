@@ -20,16 +20,16 @@ module.exports = Orderable(class Plugin extends ChainedMap {
     return this
   }
 
-  merge (obj, omit = []) {
-    if ('plugin' in obj) {
-      this.set('plugin', obj.plugin)
+  merge (object, omit = []) {
+    if ('plugin' in object) {
+      this.set('plugin', object.plugin)
     }
 
-    if ('args' in obj) {
-      this.set('args', obj.args)
+    if ('args' in object) {
+      this.set('args', object.args)
     }
 
-    return super.merge(obj, [...omit, 'args', 'plugin'])
+    return super.merge(object, [...omit, 'args', 'plugin'])
   }
 
   toConfig () {
