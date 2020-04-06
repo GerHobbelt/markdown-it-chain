@@ -37,6 +37,9 @@ module.exports = class MarkdownItChain extends ChainedMap {
     }
 
     const md = markdownIt(Object.assign(instantiationOptions, options))
+    if (!plugins || plugins.length === 0) {
+      return md;
+    }
     return plugins.reduce((md, { plugin, args }) => md.use(plugin, ...args), md)
   }
 }
