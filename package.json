@@ -1,6 +1,6 @@
 {
   "name": "@gerhobbelt/markdown-it-chain",
-  "version": "1.3.0-1",
+  "version": "1.3.0-2",
   "description": "A chaining API like webpack-chain but for markdown-it.",
   "repository": {
     "url": "ULIVZ/markdown-it-chain",
