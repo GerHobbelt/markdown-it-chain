@@ -1,15 +1,15 @@
 import MarkdownItPluginChain from '../src'
 
-function PluginA () {
-  console.log(arguments)
+function PluginA (...args) {
+  console.log(args)
 }
 
-function PluginB () {
-  console.log(arguments)
+function PluginB (...args) {
+  console.log(args)
 }
 
-function PluginC () {
-  console.log(arguments)
+function PluginC (...args) {
+  console.log(args)
 }
 
 test('options', () => {
@@ -98,8 +98,8 @@ test('plugin - after', () => {
 
 test('plugin - modify options', () => {
   let config = new MarkdownItPluginChain()
-  let optionsA = {}
-  let optionsB = {}
+  const optionsA = {}
+  const optionsB = {}
 
   config
     .plugin('A')
@@ -113,9 +113,9 @@ test('plugin - modify options', () => {
   expect(config.plugins[0].args[0]).toBe(optionsB)
 })
 
-test('plugin - modify options', () => {
+test('plugin - modify options 2', () => {
   let config = new MarkdownItPluginChain()
-  let options = { a: 1 }
+  const options = { a: 1 }
 
   config
     .plugin('A')
